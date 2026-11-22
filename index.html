@@ -3,10 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yrish Anne Magalang | About Me</title>
+    <title>Yrish Anne Magalang | Interactive Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Reset & Base Styles */
+        /* Color Themes via CSS Variables */
+body.theme-rose {
+    --bg-gradient: radial-gradient(circle at top left, #ffe4e6 0%, #fff1f2 45%, #fdf2f8 100%);
+    --primary: #be185d;
+    --primary-light: #ffe4e6;
+    --primary-soft: #fff5f7;
+    --accent: #f43f5e;
+    --border: #fbcfe8;
+    --text-main: #23141d;
+    --text-muted: #6e4e60;
+    --ring-grad: linear-gradient(135deg, #f43f5e, #be185d, #fb7185);
+    --shadow-color: rgba(190, 24, 93, 0.12);
+}
+
+body.theme-lavender {
+    --bg-gradient: radial-gradient(circle at top left, #ede9fe 0%, #f5f3ff 45%, #faf5ff 100%);
+    --primary: #6d28d9;
+    --primary-light: #ede9fe;
+    --primary-soft: #f5f3ff;
+    --accent: #8b5cf6;
+    --border: #ddd6fe;
+    --text-main: #1e1633;
+    --text-muted: #5b507a;
+    --ring-grad: linear-gradient(135deg, #8b5cf6, #6d28d9, #c084fc);
+    --shadow-color: rgba(109, 40, 217, 0.12);
+}
+
+body.theme-sage {
+    --bg-gradient: radial-gradient(circle at top left, #d1fae5 0%, #ecfdf5 45%, #f0fdf4 100%);
+    --primary: #047857;
+    --primary-light: #d1fae5;
+    --primary-soft: #ecfdf5;
+    --accent: #10b981;
+    --border: #a7f3d0;
+    --text-main: #112620;
+    --text-muted: #46665c;
+    --ring-grad: linear-gradient(135deg, #10b981, #047857, #34d399);
+    --shadow-color: rgba(4, 120, 87, 0.12);
+}
+
+/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -16,38 +56,82 @@
 
 body {
     min-height: 100vh;
-    background: radial-gradient(circle at top left, #ffe4e6 0%, #fff1f2 40%, #fdf2f8 100%);
-    color: #271722;
+    background: var(--bg-gradient);
+    color: var(--text-main);
     line-height: 1.65;
     display: flex;
     justify-content: center;
-    padding: 42px 18px;
+    padding: 32px 16px 50px;
+    transition: background 0.35s ease;
 }
 
-/* Container */
 .container {
-    max-width: 740px;
+    max-width: 750px;
     width: 100%;
 }
 
-/* Header & Profile Card */
+/* Top Navigation & Theme Switcher */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.brand-tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding-left: 6px;
+}
+
+.theme-switcher {
+    display: flex;
+    gap: 6px;
+}
+
+.theme-btn {
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.theme-btn.active,
+.theme-btn:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+
+/* Header Card */
 .profile-header {
     text-align: center;
-    background: linear-gradient(180deg, #ffffff 0%, #fff5f7 100%);
-    border: 1px solid #fbcfe8;
-    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--primary-soft) 100%);
+    border: 1px solid var(--border);
+    border-radius: 26px;
     padding: 34px 24px;
     margin-bottom: 18px;
-    box-shadow: 0 12px 28px rgba(190, 24, 93, 0.08);
+    box-shadow: 0 14px 30px var(--shadow-color);
 }
 
 .avatar-ring {
     display: inline-block;
     padding: 4px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #f43f5e, #be185d, #fb7185);
+    background: var(--ring-grad);
     margin-bottom: 14px;
-    box-shadow: 0 8px 20px rgba(190, 24, 93, 0.2);
+    box-shadow: 0 10px 22px var(--shadow-color);
 }
 
 .profile-img {
@@ -57,40 +141,34 @@ body {
     object-fit: cover;
     display: block;
     border: 3px solid #ffffff;
-    transition: transform 0.25s ease;
-}
-
-.profile-img:hover {
-    transform: scale(1.03);
 }
 
 .profile-header h1 {
     font-size: 1.95rem;
     font-weight: 700;
-    color: #1f121b;
-    letter-spacing: -0.3px;
+    color: var(--text-main);
 }
 
 .subtitle {
-    color: #6b4c5e;
+    color: var(--text-muted);
     font-size: 1rem;
-    margin-top: 4px;
+    margin-top: 3px;
     font-weight: 500;
 }
 
-.status-pill {
+.hint-text {
     display: inline-block;
     margin-top: 14px;
     padding: 6px 15px;
     font-size: 0.82rem;
     font-weight: 600;
-    color: #be185d;
-    background-color: #ffe4e6;
-    border: 1px solid #fecdd3;
+    color: var(--primary);
+    background: var(--primary-light);
+    border: 1px solid var(--border);
     border-radius: 999px;
 }
 
-/* Quick Info Grid */
+/* Clickable Quick Info Grid */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -99,19 +177,20 @@ body {
 }
 
 .info-box {
+    text-align: left;
     background: #ffffff;
-    border: 1px solid #f5d0fe;
-    border-color: #fce7f3;
-    border-radius: 16px;
-    padding: 14px 16px;
-    box-shadow: 0 5px 14px rgba(190, 24, 93, 0.04);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 15px 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .info-box:hover {
-    transform: translateY(-2px);
-    border-color: #f9a8d4;
-    box-shadow: 0 10px 20px rgba(190, 24, 93, 0.08);
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 12px 24px var(--shadow-color);
 }
 
 .info-label {
@@ -119,34 +198,42 @@ body {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.7px;
-    color: #9d174d;
+    color: var(--primary);
     font-weight: 700;
 }
 
 .info-value {
     display: block;
-    font-size: 0.94rem;
-    font-weight: 600;
-    color: #271722;
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: var(--text-main);
     margin-top: 3px;
 }
 
-/* Content Cards */
+.tap-hint {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Main Cards */
 .card {
     background: #ffffff;
-    border: 1px solid #fce7f3;
-    border-radius: 20px;
+    border: 1px solid var(--border);
+    border-radius: 22px;
     padding: 26px;
     margin-bottom: 18px;
-    box-shadow: 0 8px 22px rgba(190, 24, 93, 0.05);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
 }
 
 .card h2 {
-    font-size: 1.2rem;
-    color: #1f121b;
+    font-size: 1.22rem;
+    color: var(--text-main);
     margin-bottom: 14px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #fff1f2;
+    border-bottom: 2px solid var(--primary-soft);
     display: flex;
     align-items: center;
 }
@@ -156,28 +243,62 @@ body {
     display: inline-block;
     width: 6px;
     height: 18px;
-    background: linear-gradient(180deg, #f43f5e, #be185d);
+    background: var(--ring-grad);
     border-radius: 4px;
     margin-right: 10px;
 }
 
 .card p {
     margin-bottom: 12px;
-    color: #43303c;
+    color: var(--text-main);
+    opacity: 0.9;
     font-size: 0.97rem;
 }
 
-.card p:last-child {
-    margin-bottom: 0;
-}
-
 .section-note {
-    font-size: 0.9rem;
-    color: #78586b;
+    font-size: 0.88rem !important;
+    color: var(--text-muted) !important;
     margin-bottom: 16px !important;
 }
 
-/* Photo Gallery Grid */
+/* Mini Interactive Boxes inside About Me */
+.mini-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.mini-box {
+    text-align: left;
+    background: var(--primary-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mini-box:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: 0 8px 18px var(--shadow-color);
+}
+
+.mini-box strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--primary);
+}
+
+.mini-box span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Clickable Photo Gallery */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -185,16 +306,19 @@ body {
 }
 
 .photo-card {
-    background: #fff5f7;
-    border: 1px solid #fbcfe8;
+    background: var(--primary-soft);
+    border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .photo-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 22px rgba(190, 24, 93, 0.11);
+    border-color: var(--primary);
+    box-shadow: 0 12px 24px var(--shadow-color);
 }
 
 .img-wrap {
@@ -211,95 +335,55 @@ body {
 }
 
 .photo-card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 .img-tag {
     position: absolute;
     bottom: 8px;
     left: 8px;
-    background: rgba(157, 23, 77, 0.88);
+    background: var(--primary);
     color: #ffffff;
     font-size: 0.72rem;
     font-weight: 600;
-    padding: 3px 9px;
+    padding: 3px 10px;
     border-radius: 999px;
 }
 
-.photo-card figcaption {
+.photo-card .caption {
+    display: block;
     padding: 10px;
     font-size: 0.83rem;
-    font-weight: 500;
-    color: #3b2633;
-    text-align: center;
+    font-weight: 600;
+    color: var(--text-main);
     background: #ffffff;
 }
 
-/* Fun Facts */
-.facts-list {
-    display: grid;
-    gap: 10px;
-}
-
-.fact-item {
-    background: #fff5f7;
-    border-left: 4px solid #e11d48;
-    border-radius: 10px;
-    padding: 11px 14px;
-    font-size: 0.93rem;
-    color: #3b2633;
-}
-
-.fact-item strong {
-    color: #be185d;
-}
-
-/* Skill Badges */
+/* Clickable Skill Badges */
 .skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 9px;
-    margin-bottom: 18px;
+    gap: 10px;
 }
 
 .badge {
-    background-color: #fff1f2;
-    color: #9d174d;
-    border: 1px solid #fecdd3;
-    padding: 6px 14px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
     border-radius: 999px;
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     font-weight: 600;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .badge:hover {
-    background-color: #be185d;
+    background: var(--primary);
     color: #ffffff;
-    border-color: #be185d;
-}
-
-/* Goals List */
-.goals-list {
-    list-style: none;
-    padding-left: 4px;
-}
-
-.goals-list li {
-    position: relative;
-    padding-left: 22px;
-    margin-bottom: 8px;
-    font-size: 0.94rem;
-    color: #43303c;
-}
-
-.goals-list li::before {
-    content: "♥";
-    position: absolute;
-    left: 3px;
-    top: 1px;
-    color: #e11d48;
-    font-size: 0.85rem;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px var(--shadow-color);
 }
 
 /* Footer */
@@ -307,144 +391,371 @@ footer {
     text-align: center;
     margin-top: 22px;
     font-size: 0.84rem;
-    color: #78586b;
+    color: var(--text-muted);
 }
+
+/* Popup Modal Styling */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+    z-index: 999;
+}
+
+.modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid var(--border);
+    border-radius: 22px;
+    max-width: 440px;
+    width: 100%;
+    padding: 26px 24px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    transform: scale(0.92) translateY(10px);
+    transition: transform 0.24s ease;
+}
+
+.modal-backdrop.open .modal-box {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.modal-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 4px 11px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+}
+
+.modal-box h3 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.modal-img {
+    width: 100%;
+    max-height: 210px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+}
+
+.modal-img.hidden {
+    display: none;
+}
+
+.modal-box p {
+    font-size: 0.96rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
       
     </style>
 </head>
-<body>
+<body class="theme-rose">
 
     <div class="container">
+        <!-- Theme Color Switcher -->
+        <nav class="top-bar">
+            <span class="brand-tag">yrish.github.io</span>
+            <div class="theme-switcher" aria-label="Change color theme">
+                <button class="theme-btn active" data-theme="theme-rose" title="Rose Berry">Rose</button>
+                <button class="theme-btn" data-theme="theme-lavender" title="Soft Lavender">Lavender</button>
+                <button class="theme-btn" data-theme="theme-sage" title="Mint Sage">Sage</button>
+            </div>
+        </nav>
+
         <!-- Header / Profile Section -->
         <header class="profile-header">
             <div class="avatar-ring">
-                <!-- Replace profile.jpg with your actual profile photo in the same folder -->
+                <!-- Replace profile.jpg with your actual photo in the same folder -->
                 <img src="profile.jpg" alt="Yrish Anne Magalang" class="profile-img">
             </div>
             <h1>Yrish Anne Magalang</h1>
             <p class="subtitle">2nd Year BSIT Student • BSIT 1A</p>
-            <div class="status-pill">Learning HTML &amp; CSS • Steady Progress</div>
+            <p class="hint-text">Tap or click any card below to view more details ✨</p>
         </header>
 
-        <!-- Quick Info Grid -->
+        <!-- Clickable Quick Info Grid -->
         <section class="info-grid">
-            <div class="info-box">
+            <button type="button" class="info-box clickable"
+                data-title="Academic Program"
+                data-badge="BS Information Technology"
+                data-body="Currently pursuing a Bachelor of Science in Information Technology. Exploring how websites, interfaces, and everyday software work behind the scenes.">
                 <span class="info-label">Program</span>
-                <span class="info-value">BS Information Technology</span>
-            </div>
-            <div class="info-box">
+                <span class="info-value">BS Information Tech</span>
+                <span class="tap-hint">Click for info →</span>
+            </button>
+
+            <button type="button" class="info-box clickable"
+                data-title="Year & Section"
+                data-badge="2nd Year • BSIT 1A"
+                data-body="Now in my 2nd year as a college student under BSIT 1A. Balancing regular subjects, hands-on activities, and step-by-step coding practice.">
                 <span class="info-label">Year &amp; Section</span>
                 <span class="info-value">2nd Year • BSIT 1A</span>
-            </div>
-            <div class="info-box">
-                <span class="info-label">Current Stack</span>
+                <span class="tap-hint">Click for info →</span>
+            </button>
+
+            <button type="button" class="info-box clickable"
+                data-title="Current Tech Stack"
+                data-badge="HTML5 & CSS3"
+                data-body="I know how to build clean page structures with HTML and design layouts, colors, cards, and grids using CSS. Hosted directly on GitHub Pages.">
+                <span class="info-label">Main Stack</span>
                 <span class="info-value">HTML5 &amp; CSS3</span>
-            </div>
-            <div class="info-box">
-                <span class="info-label">Coding Vibe</span>
-                <span class="info-value">Beginner &amp; Curious</span>
-            </div>
+                <span class="tap-hint">Click for info →</span>
+            </button>
+
+            <button type="button" class="info-box clickable"
+                data-title="Coding Journey"
+                data-badge="Beginner & Growing"
+                data-body="Not an expert at coding yet, and that's totally okay! I focus on understanding the basics well and improving a little more with every small project.">
+                <span class="info-label">Skill Level</span>
+                <span class="info-value">Still Learning</span>
+                <span class="tap-hint">Click for info →</span>
+            </button>
         </section>
 
         <!-- About Me Section -->
         <section class="card">
             <h2>About Me</h2>
             <p>
-                Hi! I'm <strong>Yrish Anne Magalang</strong>, currently a 2nd-year student taking up 
+                Hi! I'm <strong>Yrish Anne Magalang</strong>, a 2nd-year student taking up 
                 <strong>Bachelor of Science in Information Technology (BSIT 1A)</strong>.
             </p>
             <p>
-                I'm not that great at coding yet and I still have plenty of things to figure out, 
-                but I already know how to structure and style simple web pages using <strong>HTML</strong> and 
-                <strong>CSS</strong>.
+                I'm not super advanced in coding yet, so I'm taking things one step at a time. Right now, 
+                I already know the fundamentals of <strong>HTML</strong> and <strong>CSS</strong>, and I enjoy 
+                turning simple ideas into neat, readable web pages like this GitHub portfolio.
             </p>
-            <p>
-                I put together this GitHub page as a personal space to practice what I learn, experiment 
-                with layouts and colors, and share a simple introduction about myself.
-            </p>
+
+            <!-- Interactive Highlight Boxes inside About Me -->
+            <div class="mini-cards">
+                <button type="button" class="mini-box clickable"
+                    data-title="Why I Built This Page"
+                    data-badge="GitHub Practice"
+                    data-body="I wanted a personal space online where I can apply what I know in HTML & CSS, practice organizing sections, and track how much I improve over time.">
+                    <strong>Why This Portfolio?</strong>
+                    <span>Tap to read my goal</span>
+                </button>
+
+                <button type="button" class="mini-box clickable"
+                    data-title="My Study & Coding Approach"
+                    data-badge="Step-by-Step"
+                    data-body="I learn best through hands-on examples—testing colors, adjusting spacing, and seeing how small changes make a page look cleaner.">
+                    <strong>How I Learn</strong>
+                    <span>Tap to see my style</span>
+                </button>
+            </div>
         </section>
 
-        <!-- Little Moments / Photo Gallery -->
+        <!-- Clickable Photo Gallery -->
         <section class="card">
             <h2>Little Moments &amp; Gallery</h2>
-            <p class="section-note">
-                A few snapshots from my everyday routine, study time, and simple moments.
-            </p>
+            <p class="section-note">Click any photo card to open its story.</p>
 
             <div class="gallery-grid">
-                <figure class="photo-card">
+                <button type="button" class="photo-card clickable"
+                    data-title="Study & Note-Taking"
+                    data-badge="BSIT 1A Routine"
+                    data-img="photo1.jpg"
+                    data-body="Reviewing class lessons and writing down tags and CSS properties so they're easier to remember during activities.">
                     <div class="img-wrap">
                         <img src="photo1.jpg" alt="Study notes and practice">
                         <span class="img-tag">Study Time</span>
                     </div>
-                    <figcaption>Reviewing lessons &amp; notes</figcaption>
-                </figure>
+                    <span class="caption">Reviewing lessons &amp; notes</span>
+                </button>
 
-                <figure class="photo-card">
+                <button type="button" class="photo-card clickable"
+                    data-title="Practicing HTML & CSS"
+                    data-badge="Web Design"
+                    data-img="photo2.jpg"
+                    data-body="Experimenting with Flexbox, Grid, rounded cards, and soft color combinations to make pages feel welcoming.">
                     <div class="img-wrap">
                         <img src="photo2.jpg" alt="HTML and CSS practice">
                         <span class="img-tag">HTML &amp; CSS</span>
                     </div>
-                    <figcaption>Trying out layouts &amp; styles</figcaption>
-                </figure>
+                    <span class="caption">Trying out layouts &amp; styles</span>
+                </button>
 
-                <figure class="photo-card">
+                <button type="button" class="photo-card clickable"
+                    data-title="2nd Year BSIT Life"
+                    data-badge="College Days"
+                    data-img="photo3.jpg"
+                    data-body="Navigating 2nd-year subjects in BSIT 1A, learning alongside classmates, and gaining confidence bit by bit.">
                     <div class="img-wrap">
                         <img src="photo3.jpg" alt="BSIT 1A student life">
                         <span class="img-tag">BSIT 1A</span>
                     </div>
-                    <figcaption>2nd-year college moments</figcaption>
-                </figure>
+                    <span class="caption">2nd-year college moments</span>
+                </button>
 
-                <figure class="photo-card">
+                <button type="button" class="photo-card clickable"
+                    data-title="Slow & Calm Breaks"
+                    data-badge="Recharge"
+                    data-img="photo4.jpg"
+                    data-body="Taking quiet breaks away from the screen to rest, reset, and come back with fresh energy.">
                     <div class="img-wrap">
                         <img src="photo4.jpg" alt="Rest and everyday life">
                         <span class="img-tag">Everyday</span>
                     </div>
-                    <figcaption>Taking a slow &amp; calm break</figcaption>
-                </figure>
+                    <span class="caption">Taking a calm breather</span>
+                </button>
             </div>
         </section>
 
-        <!-- Fun Facts & Personality -->
+        <!-- Clickable Skills & Goals -->
         <section class="card">
-            <h2>A Little More About Me</h2>
-            <div class="facts-list">
-                <div class="fact-item">
-                    <strong>Learning style:</strong> I understand better when I see examples and test things step by step.
-                </div>
-                <div class="fact-item">
-                    <strong>What I enjoy:</strong> Clean designs, neat colors, and simple pages that are easy to read.
-                </div>
-                <div class="fact-item">
-                    <strong>Mindset:</strong> No rush—progress still counts even if it starts small.
-                </div>
-            </div>
-        </section>
+            <h2>Skills &amp; What I'm Working On</h2>
+            <p class="section-note">Click any skill badge to see what I can do with it.</p>
 
-        <!-- Skills & Goals Section -->
-        <section class="card">
-            <h2>What I Know &amp; Working On</h2>
             <div class="skills">
-                <span class="badge">HTML Basics</span>
-                <span class="badge">CSS Styling</span>
-                <span class="badge">Flexbox &amp; Grid</span>
-                <span class="badge">GitHub Pages</span>
-                <span class="badge">Still Learning</span>
+                <button type="button" class="badge clickable"
+                    data-title="HTML5 Structure"
+                    data-badge="Core Skill"
+                    data-body="Comfortable using headings, paragraphs, links, images, lists, semantic sections, and clean page structure.">
+                    HTML5
+                </button>
+                <button type="button" class="badge clickable"
+                    data-title="CSS3 Styling"
+                    data-badge="Core Skill"
+                    data-body="Able to style colors, gradients, borders, shadows, typography, hover animations, and responsive grids.">
+                    CSS3
+                </button>
+                <button type="button" class="badge clickable"
+                    data-title="Flexbox & CSS Grid"
+                    data-badge="Layout"
+                    data-body="Using Flexbox and Grid to align cards, galleries, and info boxes neatly across different screen sizes.">
+                    Flexbox &amp; Grid
+                </button>
+                <button type="button" class="badge clickable"
+                    data-title="GitHub Pages"
+                    data-badge="Hosting"
+                    data-body="Uploading HTML, CSS, and image assets to a GitHub repository to publish a live personal website.">
+                    GitHub Pages
+                </button>
+                <button type="button" class="badge clickable"
+                    data-title="Continuous Learning"
+                    data-badge="Mindset"
+                    data-body="Open to feedback, practicing regularly, and slowly exploring more web development concepts.">
+                    Still Learning
+                </button>
             </div>
-
-            <ul class="goals-list">
-                <li>Write cleaner HTML tags and better-organized CSS rules.</li>
-                <li>Practice making pages look neat on both desktop and mobile screens.</li>
-                <li>Keep building small practice pages to grow more confident in front-end basics.</li>
-            </ul>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>© 2026 Yrish Anne Magalang • Made with HTML &amp; CSS on GitHub</p>
+            <p>© 2026 Yrish Anne Magalang • Interactive About Me Page</p>
         </footer>
     </div>
 
+    <!-- Popup Modal for Clicked Boxes -->
+    <div class="modal-backdrop" id="infoModal" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button type="button" class="modal-close" id="closeModal" aria-label="Close popup">&times;</button>
+            <span class="modal-badge" id="modalBadge">Details</span>
+            <h3 id="modalTitle">Title</h3>
+            <img id="modalImage" src="" alt="" class="modal-img hidden">
+            <p id="modalBody">Description goes here.</p>
+        </div>
+    </div>
+
+    <!-- Simple Interactive Script -->
+    <script>
+        const modal = document.getElementById('infoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBadge = document.getElementById('modalBadge');
+        const modalBody = document.getElementById('modalBody');
+        const modalImage = document.getElementById('modalImage');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        // Open modal when any clickable box is pressed
+        document.querySelectorAll('.clickable').forEach(item => {
+            item.addEventListener('click', () => {
+                modalTitle.textContent = item.dataset.title || 'Info';
+                modalBadge.textContent = item.dataset.badge || 'Details';
+                modalBody.textContent = item.dataset.body || '';
+
+                if (item.dataset.img) {
+                    modalImage.src = item.dataset.img;
+                    modalImage.alt = item.dataset.title || 'Gallery preview';
+                    modalImage.classList.remove('hidden');
+                } else {
+                    modalImage.classList.add('hidden');
+                    modalImage.src = '';
+                }
+
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+            });
+        });
+
+        // Close modal actions
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        });
+
+        // Switch color themes
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.body.className = btn.dataset.theme;
+                document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+
 </body>
 </html>
+
