@@ -5,107 +5,262 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yrish Anne Magalang | About Me</title>
     <link rel="stylesheet" href="style.css">
-<style>
-/* Reset & Base Styles */
+    <style>
+/* Reset & Base Font */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-    background-color: #f4f6f9;
-    color: #333;
-    line-height: 1.6;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #fdf2f8 100%);
+    color: #1e293b;
+    line-height: 1.65;
     display: flex;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 45px 18px;
 }
 
-/* Main Container */
+/* Main Wrapper */
 .container {
-    max-width: 650px;
+    max-width: 720px;
     width: 100%;
 }
 
-/* Header */
+/* Header & Profile */
 .profile-header {
     text-align: center;
-    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 32px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
 }
 
 .profile-img {
-    width: 130px;
-    height: 130px;
+    width: 135px;
+    height: 135px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid #ffffff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.18);
+    margin-bottom: 14px;
+    transition: transform 0.25s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.04);
 }
 
 .profile-header h1 {
-    font-size: 1.8rem;
-    color: #222;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.3px;
 }
 
 .subtitle {
-    color: #666;
+    color: #475569;
     font-size: 1rem;
     margin-top: 4px;
 }
 
-/* Cards (About Me & Skills) */
+.status-pill {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4338ca;
+    background-color: #e0e7ff;
+    border-radius: 999px;
+}
+
+/* Quick Info Cards */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.info-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.info-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.info-value {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 3px;
+}
+
+/* Content Cards */
 .card {
     background: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
 .card h2 {
-    font-size: 1.25rem;
-    color: #2c3e50;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #eef2f7;
-    padding-bottom: 6px;
+    font-size: 1.2rem;
+    color: #0f172a;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+}
+
+.card h2::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    background: linear-gradient(180deg, #4f46e5, #ec4899);
+    border-radius: 4px;
+    margin-right: 10px;
 }
 
 .card p {
     margin-bottom: 12px;
-    color: #4a4a4a;
-    font-size: 0.98rem;
+    color: #334155;
+    font-size: 0.97rem;
 }
 
 .card p:last-child {
     margin-bottom: 0;
 }
 
-/* Skill Badges */
+.section-note {
+    font-size: 0.92rem;
+    color: #64748b;
+    margin-bottom: 16px !important;
+}
+
+/* Photo Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    gap: 14px;
+}
+
+.photo-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.03);
+}
+
+.photo-card figcaption {
+    padding: 10px 12px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #334155;
+    text-align: center;
+    background: #ffffff;
+}
+
+/* Badges */
 .skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 9px;
+    margin-bottom: 18px;
 }
 
 .badge {
-    background-color: #e8f0fe;
-    color: #1a73e8;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.88rem;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-size: 0.85rem;
     font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.badge:hover {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+}
+
+/* Goals List */
+.goals-list {
+    list-style: none;
+    padding-left: 4px;
+}
+
+.goals-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    font-size: 0.94rem;
+    color: #475569;
+}
+
+.goals-list li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: #4f46e5;
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 25px;
-    font-size: 0.85rem;
-    color: #888;
+    margin-top: 22px;
+    font-size: 0.84rem;
+    color: #64748b;
 }
 
 
@@ -113,55 +268,106 @@ footer {
 
 
 
-  
-</style>
- 
+
+
+        
+    </style>
 </head>
 <body>
 
     <div class="container">
         <!-- Header / Profile Section -->
         <header class="profile-header">
-            <!-- Replace src="profile.jpg" once you add your photo to the same folder -->
-            <img src="https://via.placeholder.com/130" alt="Yrish Anne Magalang" class="profile-img">
+            <!-- Replace profile.jpg with your actual profile photo inside the same folder -->
+            <img src="profile.jpg" alt="Yrish Anne Magalang" class="profile-img">
             <h1>Yrish Anne Magalang</h1>
             <p class="subtitle">2nd Year BSIT Student • BSIT 1A</p>
+            <div class="status-pill">Open to Learning &amp; Growth</div>
         </header>
+
+        <!-- Quick Info Grid -->
+        <section class="info-grid">
+            <div class="info-box">
+                <span class="info-label">Program</span>
+                <span class="info-value">BS Information Technology</span>
+            </div>
+            <div class="info-box">
+                <span class="info-label">Year &amp; Section</span>
+                <span class="info-value">2nd Year • BSIT 1A</span>
+            </div>
+            <div class="info-box">
+                <span class="info-label">Main Stack</span>
+                <span class="info-value">HTML &amp; CSS</span>
+            </div>
+        </section>
 
         <!-- About Me Section -->
         <section class="card">
             <h2>About Me</h2>
             <p>
-                Hi! I'm <strong>Yrish Anne Magalang</strong>, currently a 2nd-year student taking up 
-                Bachelor of Science in Information Technology (BSIT 1A).
+                Hi! I'm <strong>Yrish Anne Magalang</strong>, a 2nd-year student taking up 
+                <strong>Bachelor of Science in Information Technology (BSIT 1A)</strong>.
             </p>
             <p>
-                I'm not that great at coding yet and I still have a lot to learn, 
-                but I already know the basics of building simple pages using <strong>HTML</strong> and <strong>CSS</strong>. 
-                I created this simple portfolio page to practice and share a little bit about myself on GitHub.
+                I wouldn't say I'm an expert at coding yet—there is still so much for me to learn—but 
+                I already know how to build and style simple web pages using <strong>HTML</strong> and 
+                <strong>CSS</strong>.
+            </p>
+            <p>
+                I made this portfolio on GitHub to practice my front-end basics, keep track of my progress, 
+                and share a simple introduction about who I am as a student.
             </p>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Photo Gallery / Little Moments Section -->
         <section class="card">
-            <h2>What I Know So Far</h2>
-            <div class="skills">
-                <span class="badge">HTML</span>
-                <span class="badge">CSS</span>
-                <span class="badge">Basic Web Layout</span>
-                <span class="badge">Learning Every Day</span>
+            <h2>Little Moments &amp; Vibes</h2>
+            <p class="section-note">
+                Simple snapshots that reflect my student life, study routine, and everyday moments.
+            </p>
+
+            <div class="gallery-grid">
+                <figure class="photo-card">
+                    <img src="photo1.jpg" alt="Study and coding notes">
+                    <figcaption>Practicing HTML &amp; CSS basics</figcaption>
+                </figure>
+
+                <figure class="photo-card">
+                    <img src="photo2.jpg" alt="College life as a BSIT student">
+                    <figcaption>2nd Year BSIT • BSIT 1A life</figcaption>
+                </figure>
+
+                <figure class="photo-card">
+                    <img src="photo3.jpg" alt="Quiet break and relaxation">
+                    <figcaption>Taking a breather between tasks</figcaption>
+                </figure>
             </div>
+        </section>
+
+        <!-- Skills & Goals Section -->
+        <section class="card">
+            <h2>What I Know &amp; Working On</h2>
+            <div class="skills">
+                <span class="badge">HTML5</span>
+                <span class="badge">CSS3</span>
+                <span class="badge">Page Layouts</span>
+                <span class="badge">GitHub Pages</span>
+                <span class="badge">Learning Step by Step</span>
+            </div>
+
+            <ul class="goals-list">
+                <li>Practice clean HTML structure and neat CSS styling.</li>
+                <li>Improve layout skills and responsive design for different screens.</li>
+                <li>Build confidence in coding one small project at a time.</li>
+            </ul>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>© 2026 Yrish Anne Magalang • Built with HTML &amp; CSS</p>
+            <p>© 2026 Yrish Anne Magalang • Personal About Me Page</p>
         </footer>
     </div>
 
 </body>
 </html>
-
-
-
 
